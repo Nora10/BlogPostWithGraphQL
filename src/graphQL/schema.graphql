@@ -1,0 +1,31 @@
+# Define a BlogPost type
+
+type BlogPost {
+  id: ID!
+  title: String!
+  content: String!
+  author: User!
+  timestamp: String!
+  externalLinks: [String]
+  images: [String]
+}
+
+# Define the User type for the author
+type User {
+  id: ID!
+  name: String!
+  email: String!
+}
+
+# Queries
+type Query {
+  getAllPosts: [BlogPost]
+  getPost(id: ID!): BlogPost
+}
+
+# Mutations
+type Mutation {
+  addPost(title: String!, content: String!, authorId: ID!, externalLinks: [String], images: [String]): BlogPost
+  updatePost(id: ID!, title: String, content: String, externalLinks: [String], images: [String]): BlogPost
+  deletePost(id: ID!): BlogPost
+}
